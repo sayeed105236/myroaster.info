@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
 use Illuminate\Support\Arr;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -54,10 +55,30 @@ class UserController extends Controller
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
-        $user->assignRole($request->input('roles'));
 
-        return redirect()->route('users.index')
+
+        return redirect()->route('companies')
                         ->with('success','User created successfully');
+    }
+    public function storeCompanies(Request $request){
+        User::insert([
+            'name' => $request->name,
+            'mname' => $request->mname,
+            'lname' => $request->lname,
+            'email' => $request->email,
+            'password'=>  Hash::make($request->password),
+            'company' => $request->company,
+            'companyContact' => $request->companyContact,
+            'image' => $request->image,
+            'is_admin'=>1,
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+        ]);
+        $notification = array(
+            'message' => 'Company Admin Added Success',
+            'alert-type' => 'success'
+        );
+        return Redirect()->back()->with($notification);
     }
 
     /**

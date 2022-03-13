@@ -26,7 +26,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#large">Add Company</a>
+                <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#addCompany">Add Company</a>
             </div>
             @include('pages.SuperAdmin.Company.modals.add_company_modal')
             <div class="container">
