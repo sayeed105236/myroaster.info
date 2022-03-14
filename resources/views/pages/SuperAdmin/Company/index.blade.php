@@ -43,20 +43,38 @@
                           </tr>
                       </thead>
                       <tbody>
+                        @foreach($companies as $row)
                           <tr>
                               <td>
+                                <div class="row">
+                                  <div class="col">
+                                    <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="#">
+                                        <img src="{{asset("storage/clients/$row->image")}}" alt="Avatar" height="26" width="26" />
+                                    </div>
+                                  </div>
+                                  <div class="col">
+                                      {{$row->company}}
+                                  </div>
+
+
+
+                                </div>
+
 
                               </td>
-                              <td></td>
-                              <td></td>
+                              <td>  {{$row->companyContact}}</td>
+                              <td>  {{$row->name}}  {{$row->lname}}</td>
                               <td>
-
+                                {{$row->email}}
                               </td>
                               <td><span class="badge badge-pill badge-light-success mr-1">Active</span></td>
                               <td>
-
+                                <a href="#" data-toggle="modal" data-target="#editCompany{{$row->id}}"><i data-feather='edit'></i></a>
+                                  <a href="/super-admin/company/delete/{{$row->id}}"><i data-feather='trash-2'></i></a>
                               </td>
+                                @include('pages.SuperAdmin.Company.modals.edit_company_modal')
                           </tr>
+                          @endforeach
 
                       </tbody>
                   </table>

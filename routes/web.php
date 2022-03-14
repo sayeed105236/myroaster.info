@@ -39,6 +39,9 @@ Route::get('/super-admin/home', [HomeController::class, 'SuperadminHome'])->name
 //Company Routes
 Route::get('/super-admin/companies', [CompanyController::class, 'index'])->name('companies')->middleware('super_admin');
 Route::post('/super-admin/company/store', [UserController::class, 'storeCompanies'])->name('company-store')->middleware('super_admin');
+Route::post('/super-admin/company/update', [CompanyController::class, 'updateCompany'])->name('company-update')->middleware('super_admin');
+Route::get('/super-admin/company/delete/{id}', [CompanyController::class, 'delete'])->middleware('super_admin');
+
 
 Route::group(['middleware' => ['super_admin']], function() {
     Route::resource('roles', RoleController::class);
