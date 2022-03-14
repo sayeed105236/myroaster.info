@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -14,39 +16,24 @@ class ProjectController extends Controller
   //Project View File
   public function index($id)
   {
-     //$projects= Project::where('user_id',Auth::id())->get();
-    return view('pages.Admin.project.index');
+      $clients = Client::where('user_id',Auth::id())->get();
+     $projects= Project::where('user_id',Auth::id())->get();
+    return view('pages.Admin.project.index',compact('projects','clients'));
   }
   public function store(Request $request)
   {
-    $cimage =$request->file('file');
-    $filename=null;
-    if ($cimage) {
-        $filename = time() . $cimage->getClientOriginalName();
 
-        Storage::disk('public')->putFileAs(
-            'clients/',
-            $cimage,
-            $filename
-        );
+    $project= new Project();
+    $project->user_id= Auth::id();
+    $project->pName= $request->pName;
+    $project->cName= $request->cName;
+    $project->Status=$request->Status;
+    $project->cNumber= $request->cNumber;
+    $project->clientName= $request->clientName;
 
-
-    }
-
-    $client= new Client;
-    $client->user_id= Auth::id();
-    $client->cname= $request->cname;
-    $client->cemail= $request->cemail;
-    $client->cnumber=$request->cnumber;
-    $client->caddress= $request->caddress;
-    $client->cstate= $request->cstate;
-    $client->cpostal_code= $request->cpostal_code;
-    $client->cperson= $request->cperson;
-    $client->cimage= $filename;
-
-    $client->save();
+    $project->save();
     $notification=array(
-        'message'=>'Client Added Successfully Added !!!',
+        'message'=>'Project Successfully Added !!!',
         'alert-type'=>'success'
     );
     return Redirect()->back()->with($notification);
@@ -55,57 +42,19 @@ class ProjectController extends Controller
   }
   public function update(Request $request)
   {
-    $image =$request->file('file');
-    $filename=null;
-    $uploadedFile = $request->file('image');
-    $oldfilename = $client['cimage'] ?? 'demo.jpg';
 
-    $oldfileexists = Storage::disk('public')->exists('clients/' . $oldfilename);
+    $project= Project::find($request->id);
 
-    if ($uploadedFile !== null) {
+    $project->user_id= Auth::id();
+    $project->pName= $request->pName;
+    $project->cName= $request->cName;
+    $project->Status=$request->Status;
+    $project->cNumber= $request->cNumber;
+    $project->clientName= $request->clientName;
 
-        if ($oldfileexists && $oldfilename != $uploadedFile) {
-            //Delete old file
-            Storage::disk('public')->delete('clients/' . $oldfilename);
-        }
-        $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
-        $filename = time() . '_' . $filename_modified;
-
-        Storage::disk('public')->putFileAs(
-            'clients/',
-            $uploadedFile,
-            $filename
-        );
-
-        $data['image'] = $filename;
-     } elseif (empty($oldfileexists)) {
-        throw new \Exception('Client image not found!');
-        $notification=array(
-            'message'=>'Client Image Not Found !!!',
-            'alert-type'=>'error'
-        );
-        return Redirect()->back()->with($notification);
-
-        //file check in storage
-      }
-
-
-
-    $client= Client::find($request->id);
-
-    $client->user_id= Auth::id();
-    $client->cname= $request->cname;
-    $client->cemail= $request->cemail;
-    $client->cnumber=$request->cnumber;
-    $client->caddress= $request->caddress;
-    $client->cstate= $request->cstate;
-    $client->cpostal_code= $request->cpostal_code;
-    $client->cperson= $request->cperson;
-    $client->cimage= $filename;
-
-    $client->save();
+    $project->save();
     $notification=array(
-        'message'=>'Client Updated Successfully Added !!!',
+        'message'=>'Project Updated Successfully !!!',
         'alert-type'=>'success'
     );
     return Redirect()->back()->with($notification);
@@ -113,11 +62,11 @@ class ProjectController extends Controller
   public function delete($id)
   {
     //dd($id);
-    $client = Client::find($id);
+    $project = Project::find($id);
 
-    $client->delete();
+    $project->delete();
     $notification=array(
-        'message'=>'Client record has been deleted successfully!!!',
+        'message'=>'Project record has been deleted successfully!!!',
         'alert-type'=>'error'
     );
     return Redirect()->back()->with($notification);

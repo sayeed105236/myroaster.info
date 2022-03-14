@@ -8,6 +8,7 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TimeKeeperController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,12 @@ Route::get('admin/home/client/delete/{id}', [ClientController::class, 'delete'])
 
 //admin add project
 Route::get('admin/home/project/{id}', [ProjectController::class, 'index'])->middleware('is_admin');
+Route::post('admin/home/project/store', [ProjectController::class, 'store'])->name('store-project')->middleware('is_admin');
+Route::post('admin/home/project/update', [ProjectController::class, 'update'])->name('update-project')->middleware('is_admin');
+Route::get('admin/home/project/delete/{id}', [ProjectController::class, 'delete'])->middleware('is_admin');
+
+//admin timekeeper
+Route::get('admin/home/timekeeper/{id}', [TimeKeeperController::class, 'index'])->middleware('is_admin');
 Route::post('admin/home/project/store', [ProjectController::class, 'store'])->name('store-project')->middleware('is_admin');
 Route::post('admin/home/project/update', [ProjectController::class, 'update'])->name('update-project')->middleware('is_admin');
 Route::get('admin/home/project/delete/{id}', [ProjectController::class, 'delete'])->middleware('is_admin');
