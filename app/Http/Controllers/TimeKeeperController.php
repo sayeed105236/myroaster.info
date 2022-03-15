@@ -19,26 +19,53 @@ class TimeKeeperController extends Controller
         return view('pages.Admin.timekeeper.index',compact('employees','projects','clients'));
     }
 
-    public function store(Request $request){
-        TimeKeeper::insert([
-            "user_id" => Auth::id(),
-            "employeeID" => $request->employeeID,
-            "clientID" => $request->clientID,
-            "projectID" => $request->projectID,
-            "projectStartDate" => $request->projectStartDate,
-            "projectEndDate" => $request->projectEndDate,
-            "roasterStartDate" => $request->roasterStartDate,
-            "roasterEndDate" => $request->roasterEndDate,
-            "duration" => $request->duration,
-            "ratePerHour" => $request->ratePerHour,
-            "amount" => $request->amount,
-            "remarks" => $request->remarks,
-            "created_at" => Carbon::now()
-        ]);
-        $notification=array(
-            'message'=>'Roaster Added Successfully !!!',
-            'alert-type'=>'success'
-        );
-        return Redirect()->route('index')->with($notification);
+    // public function store(Request $request){
+    //     TimeKeeper::insert([
+    //         "user_id" => Auth::id(),
+    //         "employeeID" => $request->employeeID,
+    //         "clientID" => $request->clientID,
+    //         "projectID" => $request->projectID,
+    //         "projectStartDate" => $request->projectStartDate,
+    //         "projectEndDate" => $request->projectEndDate,
+    //         "roasterStartDate" => $request->roasterStartDate,
+    //         "roasterEndDate" => $request->roasterEndDate,
+    //         "duration" => $request->duration,
+    //         "ratePerHour" => $request->ratePerHour,
+    //         "amount" => $request->amount,
+    //         "remarks" => $request->remarks,
+    //         "created_at" => Carbon::now()
+    //     ]);
+    //     $notification=array(
+    //         'message'=>'Roaster Added Successfully !!!',
+    //         'alert-type'=>'success'
+    //     );
+    //     return Redirect()->route('index')->with($notification);
+    // }
+
+    public function storeTimeKeeper(Request $request)
+    {
+      $timekeeper= new TimeKeeper();
+      $timekeeper->user_id= Auth::id();
+      $timekeeper->employeeID= $request->employeeID;
+      $timekeeper->clientID= $request->clientID;
+      $timekeeper->projectID=$request->projectID;
+      $timekeeper->projectStartDate= $request->projectStartDate;
+      $timekeeper->projectEndDate= $request->projectEndDate;
+      $timekeeper->roasterStartDate= $request->roasterStartDate;
+      $timekeeper->roasterEndDate= $request->roasterEndDate;
+      $timekeeper->duration= $request->duration;
+      $timekeeper->ratePerHour= $request->ratePerHour;
+      $timekeeper->amount= $request->amount;
+      $timekeeper->remarks= $request->remarks;
+      $timekeeper->created_at= Carbon::now();
+
+      $timekeeper->save();
+      $notification=array(
+          'message'=>'Timekeeper Successfully Added !!!',
+          'alert-type'=>'success'
+      );
+      return Redirect()->route('timekeeper')->with($notification);
+
+
     }
 }

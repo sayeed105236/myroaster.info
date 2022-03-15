@@ -71,7 +71,7 @@ Route::post('admin/home/project/update', [ProjectController::class, 'update'])->
 Route::get('admin/home/project/delete/{id}', [ProjectController::class, 'delete'])->middleware('is_admin');
 
 //admin timekeeper
-Route::get('admin/home/timekeeper/{id}', [TimeKeeperController::class, 'index'])->name('index')->middleware('is_admin');
-Route::post('admin/home/timekeeper/store', [TimeKeeperController::class, 'store'])->name('store-timekeeper')->middleware('is_admin');
+Route::get('admin/home/timekeeper/', [TimeKeeperController::class, 'index'])->name('timekeeper')->middleware('is_admin');
+Route::post('admin/home/timekeeper/store', [TimeKeeperController::class, 'storeTimeKeeper'])->name('store-timekeeper')->middleware('is_admin');
 Route::post('admin/home/project/update', [ProjectController::class, 'update'])->name('update-project')->middleware('is_admin');
 Route::get('admin/home/project/delete/{id}', [ProjectController::class, 'delete'])->middleware('is_admin');
