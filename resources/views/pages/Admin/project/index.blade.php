@@ -67,8 +67,9 @@
                                             <a href="/admin/home/project/delete/{{$project->id}}"><i data-feather='trash-2'></i></a>
                                         </td>
                                     </tr>
+                                    @include('pages.Admin.project.modals.projectEditModal')
                                 @endforeach
-                                @include('pages.Admin.project.modals.projectEditModal')
+
 
                             </tbody>
                         </table>
