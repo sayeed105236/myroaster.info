@@ -61,7 +61,8 @@
                                                 <label for="email-id-column">Project Start Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" class="form-control">
+                                                    <input type="date" id="start" class="form-control"
+                                                        min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
                                                 </div>
                                             </div>
 
@@ -69,7 +70,8 @@
                                                 <label for="email-id-column">Project Ends Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" class="form-control">
+                                                    <input type="date" class="form-control" id="end"
+                                                        min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
                                                 </div>
                                             </div>
 
@@ -77,14 +79,54 @@
                                                 <label for="email-id-column">Roaster Start Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="fp-date-time" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD HH:MM" />
+                                                    <input type="date" id="start_date"
+                                                        class="form-control flatpickr-date-time" placeholder="Start" min= now />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Roaster Ends Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="fp-date-time" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD HH:MM" />
+                                                    <input type="date" id="end_date"
+                                                        class="form-control flatpickr-date-time"
+                                                         placeholder="End" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" onchange="getDays()"/>
+                                                </div>
+                                            </div>
+                                            {{-- @php
+                                                $datetime1 = new DateTime();
+                                                $datetime2 = new DateTime('2011-01-03 17:13:00');
+                                                $interval = $datetime1->diff($datetime2);
+                                                $elapsed = $interval->format('%y years %m months %a days %h hours %i minutes %s seconds');
+                                                echo $elapsed;
+                                            @endphp --}}
+                                            <div class="col-md-6 col-12">
+                                                <label for="email-id-column">Duration<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Duration"
+                                                    id="days" disabled/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <label for="email-id-column">Amount Per Hour<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" id="rate" onchange="amountPerHour()" class="form-control" placeholder="0"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-12">
+                                                <label for="email-id-column">Amount<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" id="amount" class="form-control" placeholder="0" disabled/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-12">
+                                                <label for="email-id-column">Remarks<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="remarks" />
                                                 </div>
                                             </div>
 
