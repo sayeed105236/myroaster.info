@@ -43,6 +43,7 @@
 <script src="{{ asset('backend') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
 <script src="{{ asset('backend') }}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script src="{{asset('app-assets/js/custom.js')}}"></script>
+<script src="{{ asset('app-assets/js/scripts/forms/pickers/form-pickers.js') }}"></script>
 
 <script>
   $(document).ready(function() {
