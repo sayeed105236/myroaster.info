@@ -37,6 +37,73 @@
                     </div>
                 {{-- </form> --}}
             </div>
+
+            <div class="row" id="table-hover-animation">
+                <div class="col-12">
+                    <div class="card">
+
+
+
+                        <div class="container">
+                          <div class="table-responsive">
+                              <table id="example" class="table table-hover-animation table-bordered">
+                                  <thead>
+                                      <tr>
+                                        <th>#</th>
+                                          <th>Employee</th>
+                                          <th>Client</th>
+                                          <th>Project</th>
+                                          <th>Roaster Start</th>
+                                          <th>Roaster End</th>
+                                          <th>Duration</th>
+                                          <th>Rate</th>
+                                          <th>Amount</th>
+
+
+                                          <th>Action</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                    @foreach($timekeepers as $row)
+
+                                      <tr>
+                                        <td></td>
+                                        <td>
+                                          {{$row->employee->fname}} {{$row->employee->lname}}
+
+
+                                          </td>
+                                        <td>{{$row->client->cname}}</td>
+                                        <td>{{$row->project->pName}}</td>
+
+
+                                          <td>
+                                            {{$row->roasterStartDate}}
+                                          </td>
+                                          <td>{{$row->roasterEndDate}}</td>
+                                          <td>{{$row->duration}}</td>
+                                          <td>{{$row->ratePerHour}}</td>
+                                          <td>{{$row->amount}}</td>
+
+                                          <td>
+                                            <a href="#" data-toggle="modal" data-target="#editSchedule{{$row->id}}"><i data-feather='edit'></i></a>
+                                              <a href="/admin/home/timekeeper/delete/{{$row->id}}"><i data-feather='trash-2'></i></a>
+                                          </td>
+                                      </tr>
+                                      @include(
+                                          'pages.Admin.timekeeper.modals.timeKeeperEditModal'
+                                      )
+                                      @endforeach
+
+
+                                  </tbody>
+                              </table>
+                          </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

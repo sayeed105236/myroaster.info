@@ -39,7 +39,7 @@
                               <th>Name</th>
                               <th>Email</th>
                               <th>Number</th>
-                              <th>Contact Person</th>
+
 
 
 
@@ -63,7 +63,7 @@
                               </td>
                             <td>{{$row->email}}</td>
                             <td>{{$row->contact_number}}</td>
-                            <td>{{$row->date_of_birth}}</td>
+                          
 
                               <td>
                                 <span class="badge badge-pill badge-light-success mr-1">Active</span>
