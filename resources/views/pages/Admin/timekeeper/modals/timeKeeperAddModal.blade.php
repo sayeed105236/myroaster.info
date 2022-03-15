@@ -15,14 +15,13 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    <form class="form" action="{{ route('store-project') }}" method="POST"
-                                        enctype="multipart/form-data">
+                                    <form class="form" action="{{ route('store-timekeeper') }}" method="POST">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Employee</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" aria-label="Default select example">
+                                                    <select class="form-control" name="employeeID" aria-label="Default select example">
                                                         <option selected>Select employee</option>
                                                         @foreach ($employees as $employee)
                                                             <option value="{{ $employee->id }}">
@@ -35,7 +34,7 @@
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Client</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" aria-label="Default select example">
+                                                    <select class="form-control" name="clientID" aria-label="Default select example">
                                                         <option selected>Select client</option>
                                                         @foreach ($clients as $client)
                                                             <option value="{{ $client->id }}">{{ $client->cname }}
@@ -48,7 +47,7 @@
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Project</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" aria-label="Default select example">
+                                                    <select class="form-control" name="projectID" aria-label="Default select example">
                                                         <option selected>Select project</option>
                                                         @foreach ($projects as $project)
                                                             <option value="{{ $project->id }}">{{ $project->pName }}
@@ -61,7 +60,8 @@
                                                 <label for="email-id-column">Project Start Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" class="form-control">
+                                                    <input type="date" name="projectStartDate" id="start" class="form-control"
+                                                        min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
                                                 </div>
                                             </div>
 
@@ -69,7 +69,8 @@
                                                 <label for="email-id-column">Project Ends Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" class="form-control">
+                                                    <input type="date" name="projectEndDate" class="form-control" id="end"
+                                                        min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
                                                 </div>
                                             </div>
 
@@ -77,14 +78,48 @@
                                                 <label for="email-id-column">Roaster Start Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="fp-date-time" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD HH:MM" />
+                                                    <input type="date" id="start_date" name="roasterStartDate"
+                                                        class="form-control flatpickr-date-time" placeholder="Start"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Roaster Ends Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="fp-date-time" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD HH:MM" />
+                                                    <input type="date" id="end_date" name="roasterEndDate"
+                                                        class="form-control flatpickr-date-time"
+                                                         placeholder="End" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" onchange="getDays()"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <label for="email-id-column">Duration<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" name="duration" class="form-control" placeholder="Duration"
+                                                    id="days" disabled/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <label for="email-id-column">Amount Per Hour<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" id="rate" name="ratePerHour" onchange="amountPerHour()" class="form-control" placeholder="0"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-12">
+                                                <label for="email-id-column">Amount<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" id="amount" name="amount" class="form-control" placeholder="0" disabled/>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 col-12">
+                                                <label for="email-id-column">Remarks<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" name="remarks" class="form-control" placeholder="remarks" />
                                                 </div>
                                             </div>
 

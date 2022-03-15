@@ -35,7 +35,8 @@
   // Date & TIme
   if (dateTimePickr.length) {
     dateTimePickr.flatpickr({
-      enableTime: true
+      enableTime: true,
+      minDate: 'today'
     });
   }
 
