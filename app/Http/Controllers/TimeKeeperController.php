@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\Auth;
 
 class TimeKeeperController extends Controller
 {
-    public function index(){
+    public function index($id){
         $employees = Employee::where('user_id',Auth::id())->get();
         $projects = Project::where('user_id',Auth::id())->get();
         $clients = Client::where('user_id',Auth::id())->get();
         return view('pages.Admin.timekeeper.index',compact('employees','projects','clients'));
     }
 
-    
+
 
     public function storeTimeKeeper(Request $request)
     {
