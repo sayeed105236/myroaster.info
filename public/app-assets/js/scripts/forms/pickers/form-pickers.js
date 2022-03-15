@@ -36,7 +36,8 @@
   if (dateTimePickr.length) {
     dateTimePickr.flatpickr({
       enableTime: true,
-      minDate: 'today'
+      minDate: 'today',
+      static: true
     });
   }
 
@@ -45,14 +46,16 @@
     multiPickr.flatpickr({
       weekNumbers: true,
       mode: 'multiple',
-      minDate: 'today'
+      minDate: 'today',
+      static: true
     });
   }
 
   // Range
   if (rangePickr.length) {
     rangePickr.flatpickr({
-      mode: 'range'
+      mode: 'range',
+      static: true
     });
   }
 

@@ -13,7 +13,7 @@
                 </span>
             </div>
             <div class="card-body">
-                <form method="head" action="" data-toggle="modal" id="myForm">
+                {{-- <form method="head" action="" data-toggle="modal" id="myForm"> --}}
                     <div class="row row-xs">
                         <div class="col-md-5 col-lg-4 ">
                             <input type="date" id="startDate" class="form-control" placeholder="Select Start Date"
@@ -27,29 +27,30 @@
 
                         <div class="col-md-2 col-lg-3 mt-3 mt-md-0">
 
-                            <input class="btn btn btn-outline-primary btn-block" onclick="myFunction()" type="submit"
-                                value="Create Schedule">
+                            {{-- <input class="btn btn btn-outline-primary btn-block" onclick="myFunction()" type="submit"
+                                value="Create Schedule"> --}}
+                                <a class="btn btn-primary" onclick="myFunction()" href="#" data-toggle="modal" data-target="#addTimeKeeper">Create Schedule</a>
                             @include(
                                 'pages.Admin.timekeeper.modals.timeKeeperAddModal'
                             )
                         </div>
                     </div>
-                </form>
+                {{-- </form> --}}
             </div>
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
-        $('#myForm').on('submit', function(e) {
+        // $('#myForm').on('submit', function(e) {
 
-            e.preventDefault(); //stop submit
+        //     e.preventDefault();
 
-            if ($('#startDate').val()) {
-                //Check if checkbox is checked then show modal
-                $('#addTimeKeeper').modal('show');
-            }
-        });
+        //     if ($('#startDate').val()) {
+
+        //         $('#addTimeKeeper').modal('show');
+        //     }
+        // });
 
         var today = new Date();
 

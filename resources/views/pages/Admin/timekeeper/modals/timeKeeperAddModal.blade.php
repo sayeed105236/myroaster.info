@@ -15,7 +15,7 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    <form class="form" action="{{ route('store-timekeeper') }}" method="POST">
+                                    <form action="{{ route('store-timekeeper') }}" method="POST">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-12 col-12">
@@ -78,7 +78,7 @@
                                                 <label for="email-id-column">Roaster Start Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" id="start_date" name="roasterStartDate"
+                                                    <input type="text" id="start_date" name="roasterStartDate"
                                                         class="form-control flatpickr-date-time" placeholder="Start"/>
                                                 </div>
                                             </div>
@@ -86,7 +86,7 @@
                                                 <label for="email-id-column">Roaster Ends Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" id="end_date" name="roasterEndDate"
+                                                    <input type="text" id="end_date" name="roasterEndDate"
                                                         class="form-control flatpickr-date-time"
                                                          placeholder="End" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" onchange="getDays()"/>
                                                 </div>
@@ -97,7 +97,7 @@
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
                                                     <input type="text" name="duration" class="form-control" placeholder="Duration"
-                                                    id="days" disabled/>
+                                                    id="days" readonly="readonly"/>
                                                 </div>
                                             </div>
 
@@ -112,7 +112,7 @@
                                                 <label for="email-id-column">Amount<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="amount" name="amount" class="form-control" placeholder="0" disabled/>
+                                                    <input type="text" id="amount" name="amount" class="form-control" placeholder="0" readonly="readonly"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 col-12">
