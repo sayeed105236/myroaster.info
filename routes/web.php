@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TimeKeeperController;
+use App\Http\Controllers\ViewJobController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,7 +80,13 @@ Route::post('admin/home/project/update', [ProjectController::class, 'update'])->
 Route::get('admin/home/project/delete/{id}', [ProjectController::class, 'delete'])->middleware('is_admin');
 
 //admin timekeeper
-Route::get('admin/home/timekeeper/{id}', [TimeKeeperController::class, 'index'])->name('timekeeper')->middleware('is_admin');
+Route::get('admin/home/timekeeper/{id}', [TimeKeeperController::class, 'index'])->middleware('is_admin');
+Route::post('admin/home/timekeeper/store', [TimeKeeperController::class, 'storeTimeKeeper'])->name('store-timekeeper')->middleware('is_admin');
+Route::post('admin/home/timekeeper/update', [TimeKeeperController::class, 'update'])->name('update-timekeeper')->middleware('is_admin');
+Route::get('admin/home/timekeeper/delete/{id}', [TimeKeeperController::class, 'delete'])->middleware('is_admin');
+
+//admin viewjob
+Route::post('admin/home/viewjob/{id}', [ViewJobController::class, 'index'])->middleware('is_admin');
 Route::post('admin/home/timekeeper/store', [TimeKeeperController::class, 'storeTimeKeeper'])->name('store-timekeeper')->middleware('is_admin');
 Route::post('admin/home/timekeeper/update', [TimeKeeperController::class, 'update'])->name('update-timekeeper')->middleware('is_admin');
 Route::get('admin/home/timekeeper/delete/{id}', [TimeKeeperController::class, 'delete'])->middleware('is_admin');

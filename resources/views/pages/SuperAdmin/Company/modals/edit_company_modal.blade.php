@@ -45,6 +45,17 @@
                                               </div>
                                           </div>
                                           <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="email-id-column">Status</label>
+                                                <select class="form-control" name="Status" aria-label="Default select example">
+                                                    <option selected>Select Status</option>
+                                                    <option value="1">Active</option>
+                                                    <option value="2">Inactive</option>
+
+                                                  </select>
+                                            </div>
+                                        </div>
+                                          <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="email-id-column">Password</label>
                                                   <input type="password"  class="form-control" id="password" name="password" placeholder="*********" required />

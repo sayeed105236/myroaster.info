@@ -25,7 +25,7 @@
                                                         <option selected>Select employee</option>
                                                         @foreach ($employees as $employee)
                                                             <option value="{{ $employee->id }}">
-                                                                {{ $employee->mname }}</option>
+                                                                {{ $employee->lname }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>

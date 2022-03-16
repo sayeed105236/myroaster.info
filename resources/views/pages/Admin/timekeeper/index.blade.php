@@ -14,27 +14,28 @@
             </div>
             <div class="card-body">
                 {{-- <form method="head" action="" data-toggle="modal" id="myForm"> --}}
-                    <div class="row row-xs">
-                        <div class="col-md-5 col-lg-4 ">
-                            <input type="date" id="startDate" class="form-control" placeholder="Select Start Date"
-                                wire:model.defer="start_date" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" required>
-                        </div>
-                        <div class="col-md-5 col-lg-4 mt-3 mt-md-0 ">
-                            <input type="date" id="endDate" class="form-control" placeholder="Select End Date"
-                                wire:model.defer="end_date" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" required>
-
-                        </div>
-
-                        <div class="col-md-2 col-lg-3 mt-3 mt-md-0">
-
-                            {{-- <input class="btn btn btn-outline-primary btn-block" onclick="myFunction()" type="submit"
-                                value="Create Schedule"> --}}
-                                <a class="btn btn-primary" onclick="myFunction()" href="#" data-toggle="modal" data-target="#addTimeKeeper">Create Schedule</a>
-                            @include(
-                                'pages.Admin.timekeeper.modals.timeKeeperAddModal'
-                            )
-                        </div>
+                <div class="row row-xs">
+                    <div class="col-md-5 col-lg-4 ">
+                        <input type="date" id="startDate" class="form-control" placeholder="Select Start Date"
+                            wire:model.defer="start_date" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" required>
                     </div>
+                    <div class="col-md-5 col-lg-4 mt-3 mt-md-0 ">
+                        <input type="date" id="endDate" class="form-control" placeholder="Select End Date"
+                            wire:model.defer="end_date" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" required>
+
+                    </div>
+
+                    <div class="col-md-2 col-lg-3 mt-3 mt-md-0">
+
+                        {{-- <input class="btn btn btn-outline-primary btn-block" onclick="myFunction()" type="submit"
+                                value="Create Schedule"> --}}
+                        <a class="btn btn-primary" onclick="myFunction()" href="#" data-toggle="modal"
+                            data-target="#addTimeKeeper">Create Schedule</a>
+                        @include(
+                            'pages.Admin.timekeeper.modals.timeKeeperAddModal'
+                        )
+                    </div>
+                </div>
                 {{-- </form> --}}
             </div>
 
@@ -45,60 +46,61 @@
 
 
                         <div class="container">
-                          <div class="table-responsive">
-                              <table id="example" class="table table-hover-animation table-bordered">
-                                  <thead>
-                                      <tr>
-                                        <th>#</th>
-                                          <th>Employee</th>
-                                          <th>Client</th>
-                                          <th>Project</th>
-                                          <th>Roaster Start</th>
-                                          <th>Roaster End</th>
-                                          <th>Duration</th>
-                                          <th>Rate</th>
-                                          <th>Amount</th>
+                            <div class="table-responsive">
+                                <table id="example" class="table table-hover-animation table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Employee</th>
+                                            <th>Client</th>
+                                            <th>Project</th>
+                                            <th>Roaster Start</th>
+                                            <th>Roaster End</th>
+                                            <th>Duration</th>
+                                            <th>Rate</th>
+                                            <th>Amount</th>
 
 
-                                          <th>Action</th>
-                                      </tr>
-                                  </thead>
-                                  <tbody>
-                                    @foreach($timekeepers as $row)
-
-                                      <tr>
-                                        <td></td>
-                                        <td>
-                                          {{$row->employee->fname}} {{$row->employee->lname}}
-
-
-                                          </td>
-                                        <td>{{$row->client->cname}}</td>
-                                        <td>{{$row->project->pName}}</td>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($timekeepers as $row)
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    {{ $row->employee->fname }} {{ $row->employee->lname }}
 
 
-                                          <td>
-                                            {{$row->roasterStartDate}}
-                                          </td>
-                                          <td>{{$row->roasterEndDate}}</td>
-                                          <td>{{$row->duration}}</td>
-                                          <td>{{$row->ratePerHour}}</td>
-                                          <td>{{$row->amount}}</td>
-
-                                          <td>
-                                            <a href="#" data-toggle="modal" data-target="#editSchedule{{$row->id}}"><i data-feather='edit'></i></a>
-                                              <a href="/admin/home/timekeeper/delete/{{$row->id}}"><i data-feather='trash-2'></i></a>
-                                          </td>
-                                      </tr>
-                                      @include(
-                                          'pages.Admin.timekeeper.modals.timeKeeperEditModal'
-                                      )
-                                      @endforeach
+                                                </td>
+                                                <td>{{ $row->client->cname }}</td>
+                                                <td>{{ $row->project->pName }}</td>
 
 
-                                  </tbody>
-                              </table>
-                          </div>
+                                                <td>
+                                                    {{ $row->roasterStartDate }}
+                                                </td>
+                                                <td>{{ $row->roasterEndDate }}</td>
+                                                <td>{{ $row->duration }}</td>
+                                                <td>{{ $row->ratePerHour }}</td>
+                                                <td>{{ $row->amount }}</td>
+
+                                                <td>
+                                                    <a href="#" data-toggle="modal"
+                                                        data-target="#editTimeKeeper{{$row->id}}"><i
+                                                            data-feather='edit'></i></a>
+                                                    <a href="/admin/home/timekeeper/delete/{{ $row->id }}"><i
+                                                            data-feather='trash-2'></i></a>
+                                                </td>
+                                            </tr>
+                                            @include('pages.Admin.timekeeper.modals.timeKeeperEditModal')
+                                        @endforeach
+
+
+                                    </tbody>
+                                </table>
+
+                            </div>
                         </div>
 
                     </div>
@@ -145,7 +147,8 @@
             //Here we will use getTime() function to get the time difference
             var time_difference = (end_date.getTime() - start_date.getTime());
             //Here we will divide the above time difference by the no of miliseconds in a day
-            var days_difference = parseInt(time_difference / (1000 * 3600 * 24)) + ' Day ' + time_difference / (1000 * 3600) % 24 + ' Hour';
+            var days_difference = parseInt(time_difference / (1000 * 3600 * 24)) + ' Day ' + time_difference / (1000 *
+                3600) % 24 + ' Hour';
 
             //alert(days);
             document.getElementById('days').value = days_difference;
@@ -160,10 +163,42 @@
             var time_difference = (end_date.getTime() - start_date.getTime());
             //Here we will divide the above time difference by the no of miliseconds in a day
             var days_difference = parseInt(time_difference / (1000 * 3600));
-            var amount = parseInt(time_difference / (1000 * 3600)*rate);
+            var amount = parseInt(time_difference / (1000 * 3600) * rate);
 
             //alert(days);
             document.getElementById('amount').value = amount;
+        }
+
+
+
+
+        function getDay() {
+
+            var start_dates = new Date(document.getElementById('start_dates').value);
+            var end_dates = new Date(document.getElementById('end_dates').value);
+            //Here we will use getTime() function to get the time difference
+            var time_differences = (end_dates.getTime() - start_dates.getTime());
+            //Here we will divide the above time difference by the no of miliseconds in a day
+            var days_differences = parseInt(time_differences / (1000 * 3600 * 24)) + ' Day ' + time_differences / (1000 *
+                3600) % 24 + ' Hour';
+
+            //alert(days);
+            document.getElementById('day').value = days_differences;
+        }
+
+
+        function amountPerHours() {
+            var start_dates = new Date(document.getElementById('start_dates').value);
+            var end_dates = new Date(document.getElementById('end_dates').value);
+            var rates = document.getElementById('rates').value;
+            //Here we will use getTime() function to get the time difference
+            var time_differences = (end_dates.getTime() - start_dates.getTime());
+            //Here we will divide the above time difference by the no of miliseconds in a day
+            var days_differences = parseInt(time_differences / (1000 * 3600));
+            var amounts = parseInt(time_differences / (1000 * 3600) * rates);
+
+            //alert(days);
+            document.getElementById('amounts').value = amounts;
         }
     </script>
 @endsection
