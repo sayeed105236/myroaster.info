@@ -67,7 +67,13 @@
                               <td>
                                 {{$row->email}}
                               </td>
-                              <td><span class="badge badge-pill badge-light-success mr-1">Active</span></td>
+                              <td>
+                                @if ($row->Status == 1)
+                                <span class="badge badge-pill badge-light-success mr-1">Active</span>
+                                @else
+                                <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>
+                                @endif
+                              </td>
                               <td>
                                 <a href="#" data-toggle="modal" data-target="#editCompany{{$row->id}}"><i data-feather='edit'></i></a>
                                   <a href="/super-admin/company/delete/{{$row->id}}"><i data-feather='trash-2'></i></a>

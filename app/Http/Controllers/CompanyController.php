@@ -45,6 +45,7 @@ class CompanyController extends Controller
       $company->mname= $request->mname;
       $company->lname= $request->lname;
       $company->email= $request->email;
+      $company->Status=$request->Status;
       $company->password= $request->password;
       $company->company=$request->company;
       $company->companyContact= $request->companyContact;

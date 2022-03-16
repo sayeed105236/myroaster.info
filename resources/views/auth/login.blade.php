@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/plugins/forms/form-validation.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('app-assets/css/pages/page-auth.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/extensions/toastr.min.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
@@ -171,6 +172,29 @@
             }
         })
     </script>
+
+<script type="text/javascript" src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
+
+<script>
+  @if(Session::has('message'))
+	var type ="{{Session::get('alert-type','info')}}"
+	switch(type){
+		case 'info':
+			toastr.info(" {{Session::get('message')}} ");
+			break;
+		case 'success':
+			toastr.success(" {{Session::get('message')}} ");
+			break;
+		case 'warning':
+			toastr.warning(" {{Session::get('message')}} ");
+			break;
+		case 'error':
+			toastr.error(" {{Session::get('message')}} ");
+			break;
+	}
+@endif
+</script>
+
 </body>
 <!-- END: Body-->
 

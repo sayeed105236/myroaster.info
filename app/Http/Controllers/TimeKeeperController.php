@@ -44,7 +44,7 @@ class TimeKeeperController extends Controller
           'message'=>'Timekeeper Successfully Added !!!',
           'alert-type'=>'success'
       );
-      return Redirect()->route('timekeeper')->with($notification);
+      return Redirect()->back()->with($notification);
 
 
     }
@@ -52,7 +52,6 @@ class TimeKeeperController extends Controller
     {
 
       $timekeeper= TimeKeeper::find($request->id);
-      $timekeeper->user_id= Auth::id();
       $timekeeper->employeeID= $request->employeeID;
       $timekeeper->clientID= $request->clientID;
       $timekeeper->projectID=$request->projectID;

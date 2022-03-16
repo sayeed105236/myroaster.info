@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -47,20 +48,19 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
             if (auth()->user()->is_admin == 1) {
+
                 return redirect()->route('admin.home');
-            }elseif (auth()->user()->super_admin == 1) {
-              return redirect()->route('super-admin.home');
-            }
-            else{
+
+            } elseif (auth()->user()->super_admin == 1) {
+                return redirect()->route('super-admin.home');
+            } else {
                 return redirect()->route('home');
             }
-        }else{
+        } else {
             return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+                ->with('error', 'Email-Address And Password Are Wrong.');
         }
-
     }
 }
