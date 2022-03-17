@@ -56,8 +56,8 @@
                         <th scope="col">Employee Name</th>
                         <th scope="col">Total Hour</th>
                         <th scope="col">Total Amount</th>
-                        <th>Actual Start Date</th>
-                        <th>Actual Etart Date</th>
+                        <!-- <th>Actual Start Date</th>
+                        <th>Actual Etart Date</th> -->
                     </tr>
                 </thead>
                 <tbody>

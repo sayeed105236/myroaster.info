@@ -38,6 +38,24 @@
                                               </div>
                                           </div>
                                           <div class="col-md-6 col-12">
+                                              <div class="form-group">
+                                                  <label for="email-id-column">Project Address<span class="text-danger">*</span></label>
+                                                  <input type="text"  class="form-control" name="project_address" placeholder="Project Address" required />
+                                              </div>
+                                          </div>
+                                          <div class="col-md-6 col-12">
+                                              <div class="form-group">
+                                                  <label for="email-id-column">Project State<span class="text-danger">*</span></label>
+                                                  <input type="text"  class="form-control" name="project_state" placeholder="Project State" required />
+                                              </div>
+                                          </div>
+                                          <div class="col-md-6 col-12">
+                                              <div class="form-group">
+                                                  <label for="email-id-column">Project Venue/Site<span class="text-danger">*</span></label>
+                                                  <input type="text"  class="form-control" name="project_venue" placeholder="Project Venue" required />
+                                              </div>
+                                          </div>
+                                          <div class="col-md-6 col-12">
                                             <label for="email-id-column">Select Status<span class="text-danger">*</span></label>
                                             <div class="form-group">
                                             <select class="form-control" name="Status" aria-label="Default select example">

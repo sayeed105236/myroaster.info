@@ -6,6 +6,8 @@ use App\Models\Client;
 use App\Models\Employee;
 use App\Models\Project;
 use App\Models\TimeKeeper;
+use App\Models\Payment;
+use App\Models\RoasterType;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +26,7 @@ class TimeKeeperController extends Controller
 
     public function storeTimeKeeper(Request $request)
     {
+      //roaster store
       $timekeeper= new TimeKeeper();
       $timekeeper->user_id= Auth::id();
       $timekeeper->employeeID= $request->employeeID;
@@ -33,15 +36,30 @@ class TimeKeeperController extends Controller
       $timekeeper->projectEndDate= $request->projectEndDate;
       $timekeeper->roasterStartDate= $request->roasterStartDate;
       $timekeeper->roasterEndDate= $request->roasterEndDate;
+      $timekeeper->actual_startDate= $request->roasterStartDate;
+      $timekeeper->actual_endDate= $request->roasterEndDate;
       $timekeeper->duration= $request->duration;
       $timekeeper->ratePerHour= $request->ratePerHour;
       $timekeeper->amount= $request->amount;
       $timekeeper->remarks= $request->remarks;
       $timekeeper->created_at= Carbon::now();
+    //$timekeeper = $request->query('id');
 
       $timekeeper->save();
+      
+
+
+
+      $payment= new Payment;
+      $payment->roaster_id= $timekeeper->id;
+      $payment->save();
+
+      $roaster= new RoasterType;
+      $roaster->roaster_id= $timekeeper->id;
+      $roaster->save();
+
       $notification=array(
-          'message'=>'Timekeeper Successfully Added !!!',
+          'message'=>'Roaster Successfully Added !!!',
           'alert-type'=>'success'
       );
       return Redirect()->back()->with($notification);

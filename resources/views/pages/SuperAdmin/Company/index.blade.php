@@ -76,7 +76,7 @@
                               </td>
                               <td>
                                 <a href="#" data-toggle="modal" data-target="#editCompany{{$row->id}}"><i data-feather='edit'></i></a>
-                                  <a href="/super-admin/company/delete/{{$row->id}}"><i data-feather='trash-2'></i></a>
+                                  <!-- <a href="/super-admin/company/delete/{{$row->id}}"><i data-feather='trash-2'></i></a> -->
                               </td>
                                 @include('pages.SuperAdmin.Company.modals.edit_company_modal')
                           </tr>

@@ -21,6 +21,9 @@ return new class extends Migration
             $table->string('Status');
             $table->string('cNumber');
             $table->string('clientName');
+            $table->string('project_address')->nullable();
+            $table->string('project_state')->nullable();
+            $table->string('project_venue')->nullable();
             $table->timestamps();
         });
     }
