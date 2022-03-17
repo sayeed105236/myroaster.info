@@ -69,7 +69,7 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    {{ $row->employee->fname }} {{ $row->employee->lname }}
+                                                    {{ $row->employee->fname }} {{ $row->employee->mname }} {{ $row->employee->lname }}
 
 
                                                 </td>
