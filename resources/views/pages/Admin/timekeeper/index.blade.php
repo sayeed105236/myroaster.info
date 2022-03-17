@@ -89,11 +89,16 @@
                                                     <a href="#" data-toggle="modal"
                                                         data-target="#editTimeKeeper{{$row->id}}"><i
                                                             data-feather='edit'></i></a>
+                                                            <a href="#" data-toggle="modal"
+                                                                data-target="#copyTimeKeeper{{$row->id}}"><i data-feather='save'></i></a>
+
+
                                                     <a href="/admin/home/timekeeper/delete/{{ $row->id }}"><i
                                                             data-feather='trash-2'></i></a>
                                                 </td>
                                             </tr>
                                             @include('pages.Admin.timekeeper.modals.timeKeeperEditModal')
+                                              @include('pages.Admin.timekeeper.modals.timeKeeperCopyModal')
                                         @endforeach
 
 

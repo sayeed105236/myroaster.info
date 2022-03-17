@@ -1,9 +1,9 @@
-<div class="modal fade text-left" id="editTimeKeeper{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17"
+<div class="modal fade text-left" id="copyTimeKeeper{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel17">Edit Schedule</h4>
+                <h4 class="modal-title" id="myModalLabel17">Copy Schedule</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -15,9 +15,9 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    <form action="{{ route('update-timekeeper') }}" method="POST">
+                                    <form action="{{ route('store-timekeeper') }}" method="POST">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{ $row->id }}">
+
                                         <div class="row">
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Employee</label>
@@ -134,7 +134,7 @@
                 </section>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success">Update Roaster</button>
+                <button type="submit" class="btn btn-success">Create Roaster</button>
                 <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Discard</button>
             </div>
             </form>

@@ -10,6 +10,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TimeKeeperController;
 use App\Http\Controllers\ViewJobController;
+use App\Http\Controllers\CalenderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,3 +94,6 @@ Route::get('admin/home/timekeeper/delete/{id}', [TimeKeeperController::class, 'd
 
 
 Route::post('admin/home/viewjob/search', [ViewJobController::class, 'search'])->name('search')->middleware('is_admin');
+
+//admin calender
+Route::get('admin/home/calender/{id}', [CalenderController::class, 'index'])->middleware('is_admin');
