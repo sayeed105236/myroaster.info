@@ -29,6 +29,9 @@ class ProjectController extends Controller
     $project->cName= $request->cName;
     $project->Status=$request->Status;
     $project->cNumber= $request->cNumber;
+    $project->project_address= $request->project_address;
+    $project->project_venue = $request->project_venue;
+    $project->project_state= $request->project_state;
     $project->clientName= $request->clientName;
 
     $project->save();
@@ -50,6 +53,9 @@ class ProjectController extends Controller
     $project->cName= $request->cName;
     $project->Status=$request->Status;
     $project->cNumber= $request->cNumber;
+    $project->project_address= $request->project_address;
+    $project->project_venue = $request->project_venue;
+    $project->project_state= $request->project_state;
     $project->clientName= $request->clientName;
 
     $project->save();

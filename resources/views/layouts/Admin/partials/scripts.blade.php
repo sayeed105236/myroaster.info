@@ -29,6 +29,13 @@
 <script src="{{asset('app-assets/vendors/js/tables/datatable/buttons.print.min.js')}}"></script>
 <script src="{{asset('app-assets/vendors/js/tables/datatable/dataTables.rowGroup.min.js')}}"></script>
 <script src="{{asset('app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script>
+<script src="{{asset('app-assets/js/scripts/pages/app-calendar-events.js')}}"></script>
+<script src="{{asset('app-assets/js/scripts/pages/app-calendar.js')}}"></script>
+<script src="{{asset('app-assets/vendors/js/calendar/fullcalendar.min.js')}}"></script>
+<script src="{{asset('app-assets/vendors/js/extensions/moment.min.js')}}"></script>
+<script src="{{asset('app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
+<script src="{{asset('app-assets/vendors/js/forms/validation/jquery.validate.min.js')}}"></script>
+<script src="{{asset('app-assets/vendors/js/pickers/flatpickr/flatpickr.min.js')}}"></script>
 <!-- END: Page Vendor JS-->
 
 <!-- BEGIN: Page JS-->
@@ -48,9 +55,20 @@
 
 <script>
   $(document).ready(function() {
-    $('#example').DataTable();
+    $('#example').DataTable(
+      {
+          dom: 'Bfrtip',
+          buttons: [
+              'copyHtml5',
+              'excelHtml5',
+              'csvHtml5',
+              'pdfHtml5'
+          ]
+      }
+    );
     } );
 </script>
+
 <script>
     $(window).on('load', function() {
         if (feather) {

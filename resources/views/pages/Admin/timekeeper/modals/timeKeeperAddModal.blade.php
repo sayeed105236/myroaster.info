@@ -17,12 +17,13 @@
                                 <div class="card-body">
                                     <form action="{{ route('store-timekeeper') }}" method="POST">
                                         @csrf
+
                                         <div class="row">
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Employee</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="employeeID" aria-label="Default select example">
-                                                        <option selected>Select employee</option>
+                                                    <select class="form-control" name="employeeID" aria-label="Default select example" required>
+
                                                         @foreach ($employees as $employee)
                                                             <option value="{{ $employee->id }}">
                                                                 {{ $employee->lname }}</option>
@@ -34,8 +35,8 @@
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Client</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="clientID" aria-label="Default select example">
-                                                        <option selected>Select client</option>
+                                                    <select class="form-control" name="clientID" aria-label="Default select example" required>
+
                                                         @foreach ($clients as $client)
                                                             <option value="{{ $client->id }}">{{ $client->cname }}
                                                             </option>
@@ -48,7 +49,7 @@
                                                 <label for="">Select Project</label>
                                                 <div class="form-group">
                                                     <select class="form-control" name="projectID" aria-label="Default select example">
-                                                        <option selected>Select project</option>
+
                                                         @foreach ($projects as $project)
                                                             <option value="{{ $project->id }}">{{ $project->pName }}
                                                             </option>

@@ -51,10 +51,10 @@
             <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/home/viewjob/{{Auth::user()->id}}"><i data-feather='eye'></i><span class="menu-title text-truncate" data-i18n="Dashboards">View-Job</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('admin.home')}}"><i data-feather='dollar-sign'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Payment</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='dollar-sign'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Payment</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('admin.home')}}"><i data-feather='calendar'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Calendar</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/home/calender/{{Auth::user()->id}}"><i data-feather='calendar'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Calendar</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('admin.home')}}"><i data-feather='file-text'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Weekly Report</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>

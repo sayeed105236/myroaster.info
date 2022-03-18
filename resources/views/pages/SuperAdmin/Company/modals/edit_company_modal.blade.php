@@ -55,12 +55,7 @@
                                                   </select>
                                             </div>
                                         </div>
-                                          <div class="col-md-6 col-12">
-                                              <div class="form-group">
-                                                  <label for="email-id-column">Password</label>
-                                                  <input type="password"  class="form-control" id="password" name="password" placeholder="*********" required />
-                                              </div>
-                                          </div>
+                                          
                                           <div class="card-header col-12">
                                               <h4 class="card-title">Company Info</h4>
                                           </div>

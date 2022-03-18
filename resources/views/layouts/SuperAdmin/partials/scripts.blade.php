@@ -46,11 +46,21 @@
 <script src="{{ asset('app-assets/js/scripts/forms/pickers/form-pickers.js') }}"></script>
   <script src="{{asset('app-assets/js/scripts/pages/page-account-settings.js')}}"></script>
 
-<script>
-  $(document).ready(function() {
-    $('#example').DataTable();
-    } );
-</script>
+  <script>
+    $(document).ready(function() {
+      $('#example').DataTable(
+        {
+            dom: 'Bfrtip',
+            buttons: [
+                'copyHtml5',
+                'excelHtml5',
+                'csvHtml5',
+                'pdfHtml5'
+            ]
+        }
+      );
+      } );
+  </script>
 <script>
     $(window).on('load', function() {
         if (feather) {
