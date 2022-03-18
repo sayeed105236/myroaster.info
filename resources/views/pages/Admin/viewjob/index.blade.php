@@ -91,34 +91,6 @@
 
 
 
-            $("#datepicker_from").datepicker({
-                showOn: "button",
-                buttonImage: "images/calendar.gif",
-                buttonImageOnly: false,
-                "onSelect": function(date) {
-                    minDateFilter = new Date(date).getTime();
-                    oTable.fnDraw();
-                }
-            }).keyup(function() {
-                minDateFilter = new Date(this.value).getTime();
-                oTable.fnDraw();
-            });
-
-            $("#datepicker_to").datepicker({
-                showOn: "button",
-                buttonImage: "images/calendar.gif",
-                buttonImageOnly: false,
-                "onSelect": function(date) {
-                    maxDateFilter = new Date(date).getTime();
-                    oTable.fnDraw();
-                }
-            }).keyup(function() {
-                maxDateFilter = new Date(this.value).getTime();
-                oTable.fnDraw();
-            });
-
-        });
-
         // Date range filter
         minDateFilter = "";
         maxDateFilter = "";

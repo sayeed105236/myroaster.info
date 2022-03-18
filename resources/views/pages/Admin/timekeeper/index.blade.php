@@ -69,7 +69,8 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    {{ $row->employee->fname }} {{ $row->employee->mname }} {{ $row->employee->lname }}
+                                                    {{ $row->employee->fname }} {{ $row->employee->mname }}
+                                                    {{ $row->employee->lname }}
 
 
                                                 </td>
@@ -87,18 +88,23 @@
 
                                                 <td>
                                                     <a href="#" data-toggle="modal"
-                                                        data-target="#editTimeKeeper{{$row->id}}"><i
+                                                        data-target="#editTimeKeeper{{ $row->id }}"><i
                                                             data-feather='edit'></i></a>
-                                                            <a href="#" data-toggle="modal"
-                                                                data-target="#copyTimeKeeper{{$row->id}}"><i data-feather='save'></i></a>
+                                                    <a href="#" data-toggle="modal"
+                                                        data-target="#copyTimeKeeper{{ $row->id }}"><i
+                                                            data-feather='save'></i></a>
 
 
                                                     <a href="/admin/home/timekeeper/delete/{{ $row->id }}"><i
                                                             data-feather='trash-2'></i></a>
                                                 </td>
                                             </tr>
-                                            @include('pages.Admin.timekeeper.modals.timeKeeperEditModal')
-                                              @include('pages.Admin.timekeeper.modals.timeKeeperCopyModal')
+                                            @include(
+                                                'pages.Admin.timekeeper.modals.timeKeeperEditModal'
+                                            )
+                                            @include(
+                                                'pages.Admin.timekeeper.modals.timeKeeperCopyModal'
+                                            )
                                         @endforeach
 
 
@@ -204,6 +210,36 @@
 
             //alert(days);
             document.getElementById('amounts').value = amounts;
+        }
+
+
+
+        function getDuration() {
+
+            var start_date1 = new Date(document.getElementById('start_date1').value);
+            var end_date1 = new Date(document.getElementById('end_date1').value);
+            //Here we will use getTime() function to get the time difference
+            var time_difference1 = (end_date1.getTime() - start_date1.getTime());
+            //Here we will divide the above time difference by the no of miliseconds in a day
+            var days_difference1 = parseInt(time_difference1 / (1000 * 3600 * 24)) + ' Day ' + time_difference1 / (1000 *
+                3600) % 24 + ' Hour';
+
+            //alert(days);
+            document.getElementById('day1').value = days_difference1;
+        }
+
+        function roasterAmountPerHour() {
+            var start_date1 = new Date(document.getElementById('start_date1').value);
+            var end_date1 = new Date(document.getElementById('end_date1').value);
+            var hourlyRate = document.getElementById('hourlyRate').value;
+            //Here we will use getTime() function to get the time difference
+            var time_difference1 = (end_date1.getTime() - start_date1.getTime());
+            //Here we will divide the above time difference by the no of miliseconds in a day
+            var day_difference1 = parseInt(time_difference1 / (1000 * 3600));
+            var roasterAmount = parseInt(time_difference1 / (1000 * 3600) * hourlyRate);
+
+            //alert(days);
+            document.getElementById('roasterAmount').value = roasterAmount;
         }
     </script>
 @endsection

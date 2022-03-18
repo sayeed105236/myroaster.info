@@ -1,4 +1,4 @@
-<div class="modal fade text-left" id="copyTimeKeeper{{$row->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17"
+<div class="modal fade text-left" id="copyTimeKeeper{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -22,7 +22,7 @@
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Employee</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="employeeID" aria-label="Default select example">
+                                                    <select class="form-control" name="employeeID" aria-label="Default select example" required>
 
                                                         @foreach ($employees as $employee)
                                                             <option value="{{ $employee->id }}">
@@ -35,7 +35,7 @@
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Client</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="clientID" aria-label="Default select example">
+                                                    <select class="form-control" name="clientID" aria-label="Default select example" required>
 
                                                         @foreach ($clients as $client)
                                                             <option value="{{ $client->id }}">{{ $client->cname }}
@@ -61,7 +61,7 @@
                                                 <label for="email-id-column">Project Start Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" value="{{ $row->projectStartDate }}" name="projectStartDate" id="start" class="form-control"
+                                                    <input type="date" name="projectStartDate" id="start" class="form-control"
                                                         min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
                                                 </div>
                                             </div>
@@ -70,7 +70,7 @@
                                                 <label for="email-id-column">Project Ends Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" name="projectEndDate" value="{{ $row->projectEndDate }}" class="form-control" id="end"
+                                                    <input type="date" name="projectEndDate" class="form-control" id="end"
                                                         min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
                                                 </div>
                                             </div>
@@ -79,7 +79,7 @@
                                                 <label for="email-id-column">Roaster Start Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" value="{{ $row->roasterStartDate }}" id="start_dates" name="roasterStartDate"
+                                                    <input type="text" id="start_date1" value="{{ $row->roasterStartDate }}" name="roasterStartDate"
                                                         class="form-control flatpickr-date-time" placeholder="Start"/>
                                                 </div>
                                             </div>
@@ -87,9 +87,9 @@
                                                 <label for="email-id-column">Roaster Ends Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" value="{{ $row->roasterEndDate }}" id="end_dates" name="roasterEndDate"
-                                                        class="form-control flatpickr-date-time"
-                                                         placeholder="End" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" onchange="getDay()"/>
+                                                    <input type="text" id="end_date1" name="roasterEndDate"
+                                                        class="form-control flatpickr-date-time" value="{{ $row->roasterEndDate }}"
+                                                         placeholder="End" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" onchange="getDuration()"/>
                                                 </div>
                                             </div>
 
@@ -97,8 +97,8 @@
                                                 <label for="email-id-column">Duration<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" value="{{ $row->duration }}" name="duration" class="form-control" placeholder="Duration"
-                                                    id="day" readonly="readonly"/>
+                                                    <input type="text" name="duration" value="{{ $row->duration }}" class="form-control" placeholder="Duration"
+                                                    id="day1" readonly="readonly"/>
                                                 </div>
                                             </div>
 
@@ -106,21 +106,21 @@
                                                 <label for="email-id-column">Amount Per Hour<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" value="{{ $row->ratePerHour }}" id="rates" name="ratePerHour" onchange="amountPerHours()" class="form-control" placeholder="0"/>
+                                                    <input type="text" id="hourlyRate" value="{{ $row->ratePerHour }}" name="ratePerHour" onchange="roasterAmountPerHour()" class="form-control" placeholder="0"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 col-12">
                                                 <label for="email-id-column">Amount<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" value="{{ $row->amount }}" id="amounts" name="amount" class="form-control" placeholder="0" readonly="readonly"/>
+                                                    <input type="text" id="roasterAmount" value="{{ $row->amount }}" name="amount" class="form-control" placeholder="0" readonly="readonly"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 col-12">
                                                 <label for="email-id-column">Remarks<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" value="{{ $row->remarks }}" name="remarks" class="form-control" placeholder="remarks" />
+                                                    <input type="text" name="remarks" value="{{ $row->remarks }}" class="form-control" placeholder="remarks" />
                                                 </div>
                                             </div>
 
