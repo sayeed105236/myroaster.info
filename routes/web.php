@@ -11,6 +11,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TimeKeeperController;
 use App\Http\Controllers\ViewJobController;
 use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,7 +94,16 @@ Route::post('admin/home/timekeeper/update', [TimeKeeperController::class, 'updat
 Route::get('admin/home/timekeeper/delete/{id}', [TimeKeeperController::class, 'delete'])->middleware('is_admin');
 
 
+//admin payment
+Route::get('admin/home/payment/{id}', [PaymentController::class, 'index'])->middleware('is_admin');
+Route::post('admin/home/timekeeper/store', [TimeKeeperController::class, 'storeTimeKeeper'])->name('store-timekeeper')->middleware('is_admin');
+Route::post('admin/home/timekeeper/update', [TimeKeeperController::class, 'update'])->name('update-timekeeper')->middleware('is_admin');
+Route::get('admin/home/timekeeper/delete/{id}', [TimeKeeperController::class, 'delete'])->middleware('is_admin');
+Route::post('admin/home/payment/search', [PaymentController::class, 'search'])->name('searchData')->middleware('is_admin');
+
+
 Route::post('admin/home/viewjob/search', [ViewJobController::class, 'search'])->name('search')->middleware('is_admin');
 
 //admin calender
 Route::get('admin/home/calender/{id}', [CalenderController::class, 'index'])->middleware('is_admin');
+
