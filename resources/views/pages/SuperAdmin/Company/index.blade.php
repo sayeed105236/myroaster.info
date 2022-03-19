@@ -34,7 +34,8 @@
                   <table id="example" class="table table-hover-animation table-bordered">
                       <thead>
                           <tr>
-                              <th>Company</th>
+                              <th>Company Image</th>
+                              <th>Comapny Name</th>
                               <th>Contact</th>
                               <th>Admin Name</th>
                               <th>Email</th>
@@ -48,20 +49,26 @@
                               <td>
                                 <div class="row">
                                   <div class="col">
+                                    @if($row->image != null)
                                     <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="#">
                                         <img src="{{asset("storage/clients/$row->image")}}" alt="Avatar" height="26" width="26" />
                                     </div>
+                                    @else
+
+                                    @endif
                                   </div>
-                                  <div class="col">
-                                      {{$row->company}}
-                                  </div>
+
+
+
 
 
 
                                 </div>
 
 
+
                               </td>
+                                <td>{{$row->company}}</td>
                               <td>  {{$row->companyContact}}</td>
                               <td>  {{$row->name}}  {{$row->lname}}</td>
                               <td>
