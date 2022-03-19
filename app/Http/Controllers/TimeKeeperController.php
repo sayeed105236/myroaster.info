@@ -36,8 +36,7 @@ class TimeKeeperController extends Controller
       $timekeeper->projectEndDate= $request->projectEndDate;
       $timekeeper->roasterStartDate= $request->roasterStartDate;
       $timekeeper->roasterEndDate= $request->roasterEndDate;
-      $timekeeper->actual_startDate= $request->roasterStartDate;
-      $timekeeper->actual_endDate= $request->roasterEndDate;
+
       $timekeeper->duration= $request->duration;
       $timekeeper->ratePerHour= $request->ratePerHour;
       $timekeeper->amount= $request->amount;
@@ -46,7 +45,7 @@ class TimeKeeperController extends Controller
     //$timekeeper = $request->query('id');
 
       $timekeeper->save();
-      
+
 
 
 

@@ -158,8 +158,9 @@
             //Here we will use getTime() function to get the time difference
             var time_difference = (end_date.getTime() - start_date.getTime());
             //Here we will divide the above time difference by the no of miliseconds in a day
-            var days_difference = parseInt(time_difference / (1000 * 3600 * 24)) + ' Day ' + time_difference / (1000 *
-                3600) % 24 + ' Hour';
+            var days_difference = parseInt(time_difference / (1000 * 3600));
+                // var days_difference = parseInt(time_difference / (1000 * 3600 * 24)) + ' Day ' + time_difference / (1000 *
+                // 3600) % 24 + ' Hour';
 
             //alert(days);
             document.getElementById('days').value = days_difference;
@@ -190,8 +191,7 @@
             //Here we will use getTime() function to get the time difference
             var time_differences = (end_dates.getTime() - start_dates.getTime());
             //Here we will divide the above time difference by the no of miliseconds in a day
-            var days_differences = parseInt(time_differences / (1000 * 3600 * 24)) + ' Day ' + time_differences / (1000 *
-                3600) % 24 + ' Hour';
+            var days_differences = parseInt(time_differences / (1000 * 3600));
 
             //alert(days);
             document.getElementById('day').value = days_differences;
@@ -221,8 +221,7 @@
             //Here we will use getTime() function to get the time difference
             var time_difference1 = (end_date1.getTime() - start_date1.getTime());
             //Here we will divide the above time difference by the no of miliseconds in a day
-            var days_difference1 = parseInt(time_difference1 / (1000 * 3600 * 24)) + ' Day ' + time_difference1 / (1000 *
-                3600) % 24 + ' Hour';
+            var days_difference1 = parseInt(time_difference1 / (1000 * 3600));
 
             //alert(days);
             document.getElementById('day1').value = days_difference1;
