@@ -60,7 +60,7 @@
                                             <label for="email-id-column">Select Status<span class="text-danger">*</span></label>
                                             <div class="form-group">
                                             <select class="form-control" name="Status" aria-label="Default select example">
-                                                <option selected>Select Status</option>
+                                                <option value="" disabled selected hidden>Please Choose...</option>
                                                 <option value="1">Active</option>
                                                 <option value="2">Inactive</option>
 
@@ -72,9 +72,9 @@
                                                 <label for="email-id-column">Clients<span class="text-danger">*</span></label>
                                                 <div class="form-group">
                                                 <select class="form-control" name="clientName" aria-label="Default select example">
-                                                    <option selected>Select Client</option>
+                                                    <option value="" disabled selected hidden>Please Choose...</option>
                                                     @foreach ($clients as $client)
-                                                        <option value="{{ $client->id }} {{ $client->id == $project->clientName? 'selected':'' }}">{{ $client->cname }}</option>
+                                                        <option value="{{ $client->id }}"{{ $client->id == $project->clientName? 'selected':'' }}>{{ $client->cname }}</option>
                                                     @endforeach
                                                   </select>
                                             </div>

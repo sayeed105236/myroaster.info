@@ -69,15 +69,24 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
+
                                                     {{ $row->employee->fname }} {{ $row->employee->mname }}
                                                     {{ $row->employee->lname }}
 
 
                                                 </td>
-                                                <td>{{ $row->client->cname }}</td>
-                                                <td>{{ $row->project->pName }}</td>
-
-
+                                                <td>@if (isset($row->client->cname))
+                                                    {{ $row->client->cname }}
+                                                    @else
+                                                    Null
+                                                @endif
+                                                    </td>
+                                                <td>@if (isset($row->project->pName))
+                                                    {{ $row->project->pName }}
+                                                    @else
+                                                    Null
+                                                @endif
+                                                   </td>
                                                 <td>
                                                     {{ $row->roasterStartDate }}
                                                 </td>
@@ -147,6 +156,8 @@
 
 
         }
+
+
     </script>
 
     <script>

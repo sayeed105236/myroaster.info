@@ -16,7 +16,7 @@ class ProjectController extends Controller
   //Project View File
   public function index($id)
   {
-      $clients = Client::where('user_id',Auth::id())->get();
+    $clients = Client::where('user_id',Auth::id())->get();
      $projects= Project::where('user_id',Auth::id())->get();
     return view('pages.Admin.project.index',compact('projects','clients'));
   }
