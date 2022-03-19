@@ -61,8 +61,8 @@
                                             <div class="form-group">
                                             <select class="form-control" name="Status" aria-label="Default select example">
                                                 <option value="" disabled selected hidden>Please Choose...</option>
-                                                <option value="1">Active</option>
-                                                <option value="2">Inactive</option>
+                                                <option value="1" {{ $project->Status == 1? 'selected':'' }}>Active</option>
+                                                <option value="2" {{ $project->Status == 2? 'selected':'' }}>Inactive</option>
 
                                               </select>
                                         </div>
