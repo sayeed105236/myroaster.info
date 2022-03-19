@@ -36,9 +36,10 @@
   if (dateTimePickr.length) {
     dateTimePickr.flatpickr({
       enableTime: true,
-      minDate: 'today',
+      minDate: $('#start').val(),
       static: true
     });
+
   }
 
   // Multiple Dates
@@ -46,7 +47,7 @@
     multiPickr.flatpickr({
       weekNumbers: true,
       mode: 'multiple',
-      minDate: 'today',
+      minDate: new Date($("#start").val()),
       static: true
     });
   }

@@ -61,8 +61,8 @@
                                                 <label for="email-id-column">Project Start Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" name="projectStartDate" id="start" class="form-control"
-                                                        min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
+                                                    <input type="date" name="projectStartDate" id="start" class="form-control projectStartDate"
+                                                        min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" yyyy-mm-dd>
                                                 </div>
                                             </div>
 
