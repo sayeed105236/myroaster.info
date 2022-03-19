@@ -48,14 +48,14 @@
                                             <div class="form-group">
                                                 <label for="email-id-column">Status</label>
                                                 <select class="form-control" name="Status" aria-label="Default select example">
-                                                    <option selected>Select Status</option>
-                                                    <option value="1">Active</option>
-                                                    <option value="2">Inactive</option>
+                                                    <option value="" disabled selected hidden>Please Choose...</option>
+                                                    <option value="1"{{ $row->Status == 1? 'selected':'' }}>Active</option>
+                                                    <option value="2"{{ $row->Status == 2? 'selected':'' }}>Inactive</option>
 
                                                   </select>
                                             </div>
                                         </div>
-                                          
+
                                           <div class="card-header col-12">
                                               <h4 class="card-title">Company Info</h4>
                                           </div>
