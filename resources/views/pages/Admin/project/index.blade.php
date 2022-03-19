@@ -60,7 +60,11 @@
                                             @endif
 
                                         </td>
-                                        <td>{{ $project->client->cname }}</td>
+                                        <td>@if (isset($project->client->cname))
+                                            {{ $project->client->cname }}
+                                            @else
+                                            Null
+                                        @endif</td>
                                         <td>
                                             <a href="#" data-toggle="modal" data-target="#editProject{{$project->id}}"><i
                                                     data-feather='edit'></i></a>

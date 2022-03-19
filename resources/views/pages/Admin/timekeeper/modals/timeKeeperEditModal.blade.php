@@ -23,10 +23,10 @@
                                                 <label for="">Select Employee</label>
                                                 <div class="form-group">
                                                     <select class="form-control" name="employeeID" aria-label="Default select example">
-
+                                                        <option value="" disabled selected hidden>Please Choose...</option>
                                                         @foreach ($employees as $employee)
-                                                            <option value="{{ $employee->id }}">
-                                                                {{ $employee->lname }}</option>
+                                                            <option value="{{ $employee->id }}"{{ $employee->id == $row->employeeID? 'selected':'' }}>
+                                                                {{ $employee->fname }} {{ $employee->mname }}  {{ $employee->lname }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -36,9 +36,9 @@
                                                 <label for="">Select Client</label>
                                                 <div class="form-group">
                                                     <select class="form-control" name="clientID" aria-label="Default select example">
-
+                                                        <option value="" disabled selected hidden>Please Choose...</option>
                                                         @foreach ($clients as $client)
-                                                            <option value="{{ $client->id }}">{{ $client->cname }}
+                                                            <option value="{{ $client->id }}" {{ $client->id == $row->clientID? 'selected':'' }}>{{ $client->cname }}
                                                             </option>
                                                         @endforeach
                                                     </select>
@@ -49,9 +49,9 @@
                                                 <label for="">Select Project</label>
                                                 <div class="form-group">
                                                     <select class="form-control" name="projectID" aria-label="Default select example">
-
+                                                        <option value="" disabled selected hidden>Please Choose...</option>
                                                         @foreach ($projects as $project)
-                                                            <option value="{{ $project->id }}">{{ $project->pName }}
+                                                            <option value="{{ $project->id }}" {{ $project->id == $row->projectID? 'selected':'' }}>{{ $project->pName }}
                                                             </option>
                                                         @endforeach
                                                     </select>
