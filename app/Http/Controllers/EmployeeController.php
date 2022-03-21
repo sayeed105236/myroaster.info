@@ -67,9 +67,12 @@ class EmployeeController extends Controller
 
   public function update(Request $request)
   {
+    // $request->validate([
+    //     'image' => 'required'
+    // ]);
     $image =$request->file('file');
     $filename=null;
-    $uploadedFile = $request->file('image');
+    $uploadedFile = $request->file('employee_image');
     $oldfilename = $employee['image'] ?? 'demo.jpg';
 
     $oldfileexists = Storage::disk('public')->exists('employees/' . $oldfilename);
@@ -91,7 +94,8 @@ class EmployeeController extends Controller
 
         $data['image'] = $filename;
      } elseif (empty($oldfileexists)) {
-        throw new \Exception('Employee image not found!');
+        // throw new \Exception('Employee image not found!');
+        $uploadedFile = null;
         $notification=array(
             'message'=>'User Image Not Found !!!',
             'alert-type'=>'error'

@@ -48,7 +48,7 @@
                             <tbody>
                                 @foreach ($projects as $project)
                                     <tr>
-                                        <td>{{ $project->id }}</td>
+                                        <td>{{ $loop->index+1 }}</td>
                                         <td>{{ $project->pName }}</td>
                                         <td>{{ $project->cName }}</td>
                                         <td>{{ $project->cNumber }}</td>

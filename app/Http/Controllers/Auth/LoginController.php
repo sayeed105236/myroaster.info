@@ -50,19 +50,19 @@ class LoginController extends Controller
         $remember_me = $request->has('remember_me') ? true : false;
 
         if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']), $remember_me)) {
-
             if (auth()->user()->is_admin == 1) {
-
                 return redirect()->route('admin.home');
-
             } elseif (auth()->user()->super_admin == 1) {
                 return redirect()->route('super-admin.home');
             } else {
                 return redirect()->route('home');
             }
         } else {
-            return redirect()->route('login')
-                ->with('error', 'Email-Address And Password Are Wrong.');
+            $notification=array(
+                'message'=>'Email and Password did not match!',
+                'alert-type' =>'error'
+            );
+          return redirect()->route('login')->with($notification);
         }
     }
 }

@@ -8,8 +8,10 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
+use Session;
 use Illuminate\Support\Arr;
 use Carbon\Carbon;
+use App\Notifications\UserCredential;
 
 class UserController extends Controller
 {
@@ -61,24 +63,35 @@ class UserController extends Controller
                         ->with('success','User created successfully');
     }
     public function storeCompanies(Request $request){
-        User::insert([
-            'name' => $request->name,
-            'mname' => $request->mname,
-            'lname' => $request->lname,
-            'email' => $request->email,
-            'password'=>  Hash::make($request->password),
-            'company' => $request->company,
-            'companyContact' => $request->companyContact,
-            'image' => $request->image,
-            'is_admin'=>1,
-            'created_at'=>Carbon::now(),
-            'updated_at'=>Carbon::now(),
-        ]);
+        $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $password = substr(str_shuffle($chars), 0, 10);
+        $email_data['email']=$request['email'];
+        $email_data['name']=$request['name'];
+        $email_data['password']=$password;
+        DB::transaction(function() use ($request,$password,$email_data){
+            $data=User::create([
+                'name' => $request->name,
+                'mname' => $request->mname,
+                'lname' => $request->lname,
+                'email' => $request->email,
+                'password'=>Hash::make($password),
+                'company' => $request->company,
+                'companyContact' => $request->companyContact,
+                'image' => $request->image,
+                'is_admin'=>1,
+                'created_at'=>Carbon::now(),
+                'updated_at'=>Carbon::now(),
+            ]);
+
+            $data->notify(new UserCredential($email_data));
+            Session::flash('success','User has been Successfully Registered!!');
+        });
         $notification = array(
             'message' => 'Company Admin Added Success',
             'alert-type' => 'success'
         );
         return Redirect()->back()->with($notification);
+
     }
 
     /**

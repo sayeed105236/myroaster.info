@@ -37,6 +37,7 @@
     dateTimePickr.flatpickr({
       enableTime: true,
       minDate: $('#start').val(),
+    //   dateFormat: "d-m-Y",
       static: true
     });
 
@@ -47,6 +48,7 @@
     multiPickr.flatpickr({
       weekNumbers: true,
       mode: 'multiple',
+    //   dateFormat: "d-m-Y",
       minDate: new Date($("#start").val()),
       static: true
     });
@@ -56,6 +58,7 @@
   if (rangePickr.length) {
     rangePickr.flatpickr({
       mode: 'range',
+      dateFormat: "d-m-Y",
       static: true
     });
   }

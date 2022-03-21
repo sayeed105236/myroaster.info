@@ -61,19 +61,19 @@
                                                 <label for="email-id-column">Project Start Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" name="projectStartDate" id="start" class="form-control projectStartDate"
-                                                        min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" yyyy-mm-dd>
+                                                    <input type="date" id="start" name="projectStartDate" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD" />
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6 col-12">
-                                                <label for="email-id-column">Project Ends Date<span
+                                                <label for="email-id-column">Project End Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" name="projectEndDate" class="form-control" id="end"
-                                                        min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
+                                                    <input type="date" id="end" name="projectEndDate" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD" />
                                                 </div>
                                             </div>
+
+
 
                                             <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Roaster Start Date & Time<span

@@ -36,6 +36,7 @@
                       <thead>
                           <tr>
                             <th>#</th>
+                            <th>Image</th>
                               <th>Name</th>
                               <th>Email</th>
                               <th>Number</th>
@@ -50,20 +51,14 @@
                       <tbody>
                         @foreach($employees as $row)
                           <tr>
-                            <td></td>
+                              <td>{{ $loop->index+1 }}</td>
+                            <td><img src="{{asset("storage/employees/$row->image")}}" alt="Avatar" height="26" width="26" /></td>
                             <td>
-                              <div class="row">
-                                <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="{{$row->fname}}">
-                                    <img src="{{asset("storage/employees/$row->image")}}" alt="Avatar" height="26" width="26" />
-                                </div>
-                                {{$row->fname}} {{$row->lname}}
-                              </div>
-
-
+                              {{$row->fname}} {{$row->lname}}
                               </td>
                             <td>{{$row->email}}</td>
                             <td>{{$row->contact_number}}</td>
-                          
+
 
                               <td>
                                 <span class="badge badge-pill badge-light-success mr-1">Active</span>
