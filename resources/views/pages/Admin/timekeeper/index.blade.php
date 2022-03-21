@@ -18,16 +18,14 @@
                 {{-- <form method="head" action="" data-toggle="modal" id="myForm"> --}}
                 <div class="row row-xs">
                     <div class="col-md-4">
-                        <label for="email-id-column">Project Start Date<span
-                                class="text-danger">*</span></label>
+                       
                         <div class="form-group">
                             <input type="date" id="startDate" name="projectStartDate" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" />
                         </div>
                     </div>
 
                     <div class="col-md-4 col-12">
-                        <label for="email-id-column">Project End Date<span
-                                class="text-danger">*</span></label>
+
                         <div class="form-group">
                             <input type="date" id="endDate" name="projectEndDate" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD"  min="{{ Carbon\Carbon::now()->format('Y-m-d') }}"/>
                         </div>
