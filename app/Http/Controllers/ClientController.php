@@ -81,7 +81,8 @@ class ClientController extends Controller
 
         $data['image'] = $filename;
      } elseif (empty($oldfileexists)) {
-        throw new \Exception('Client image not found!');
+        // throw new \Exception('Client image not found!');
+        $uploadedFile = null;
         $notification=array(
             'message'=>'Client Image Not Found !!!',
             'alert-type'=>'error'

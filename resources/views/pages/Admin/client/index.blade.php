@@ -37,6 +37,7 @@
                       <thead>
                           <tr>
                             <th>#</th>
+                            <th>Image</th>
                               <th>Name</th>
                               <th>Email</th>
                               <th>Number</th>
@@ -55,14 +56,10 @@
                         @foreach($clients as $row)
 
                           <tr>
-                            <td></td>
+                            <td>{{ $loop->index+1 }}</td>
+                            <td> <img src="{{asset("storage/clients/$row->cimage")}}" alt="Avatar" height="26" width="26" /></td>
                             <td>
-                              <div class="row">
-                                <div data-toggle="tooltip" data-popup="tooltip-custom" data-placement="top" title="" class="avatar pull-up my-0" data-original-title="">
-                                    <img src="{{asset("storage/clients/$row->cimage")}}" alt="Avatar" height="26" width="26" />
-                                </div>
 
-                              </div>
                               {{$row->cname}}
 
 

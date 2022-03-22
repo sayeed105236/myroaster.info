@@ -3,6 +3,7 @@
 
 @section('admincontent')
     <div class="col-lg-12 col-md-12">
+
         <div class="card p-0">
             <div class="card-header text-primary border-top-0 border-left-0 border-right-0">
                 <h3 class="card-title text-primary d-inline">
@@ -12,18 +13,24 @@
                     <i class="fa fa-chevron-up clickable"></i>
                 </span>
             </div>
+
             <div class="card-body">
                 {{-- <form method="head" action="" data-toggle="modal" id="myForm"> --}}
                 <div class="row row-xs">
-                    <div class="col-md-5 col-lg-4 ">
-                        <input type="date" id="startDate" class="form-control" placeholder="Select Start Date"
-                            wire:model.defer="start_date" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" required>
+                    <div class="col-md-4">
+                       
+                        <div class="form-group">
+                            <input type="date" id="startDate" name="projectStartDate" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" />
+                        </div>
                     </div>
-                    <div class="col-md-5 col-lg-4 mt-3 mt-md-0 ">
-                        <input type="date" id="endDate" class="form-control" placeholder="Select End Date"
-                            wire:model.defer="end_date" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" required>
 
+                    <div class="col-md-4 col-12">
+
+                        <div class="form-group">
+                            <input type="date" id="endDate" name="projectEndDate" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD"  min="{{ Carbon\Carbon::now()->format('Y-m-d') }}"/>
+                        </div>
                     </div>
+
 
                     <div class="col-md-2 col-lg-3 mt-3 mt-md-0">
 
@@ -38,6 +45,7 @@
                 </div>
                 {{-- </form> --}}
             </div>
+
 
             <div class="row" id="table-hover-animation">
                 <div class="col-12">
@@ -67,7 +75,7 @@
                                     <tbody>
                                         @foreach ($timekeepers as $row)
                                             <tr>
-                                                <td></td>
+                                                <td>{{ $loop->index+1 }}</td>
                                                 <td>
 
                                                     {{ $row->employee->fname }} {{ $row->employee->mname }}
@@ -128,6 +136,14 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function () {
+          $('.date').datetimepicker({
+            format: 'MM/DD/YYYY',
+            locale: 'en'
+          });
+        </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
