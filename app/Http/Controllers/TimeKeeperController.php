@@ -26,6 +26,7 @@ class TimeKeeperController extends Controller
 
     public function storeTimeKeeper(Request $request)
     {
+        dd($request);
       //roaster store
       $timekeeper= new TimeKeeper();
       $timekeeper->user_id= Auth::id();
@@ -67,29 +68,27 @@ class TimeKeeperController extends Controller
     }
     public function update(Request $request)
     {
-
-      $timekeeper= TimeKeeper::find($request->id);
-      $timekeeper->employeeID= $request->employeeID;
-      $timekeeper->clientID= $request->clientID;
-      $timekeeper->projectID=$request->projectID;
-      $timekeeper->projectStartDate= $request->projectStartDate;
-      $timekeeper->projectEndDate= $request->projectEndDate;
-      $timekeeper->roasterStartDate= $request->roasterStartDate;
-      $timekeeper->roasterEndDate= $request->roasterEndDate;
-      $timekeeper->duration= $request->duration;
-      $timekeeper->ratePerHour= $request->ratePerHour;
-      $timekeeper->amount= $request->amount;
-      $timekeeper->remarks= $request->remarks;
-      $timekeeper->created_at= Carbon::now();
-
-      $timekeeper->save();
-
-
-      $notification=array(
-          'message'=>'Scheduler Updated Successfully Added !!!',
-          'alert-type'=>'success'
-      );
-      return Redirect()->back()->with($notification);
+        dd($request);
+        $subcat_id = $request->id;
+        TimeKeeper::findOrFail($subcat_id)->Update([
+            'employeeID' => $request->employeeID,
+            'clientID' => $request->clientID,
+            'projectID'=>$request->projectID,
+            'projectStartDate'=> $request->projectStartDate,
+            'projectEndDate'=> $request->projectEndDate,
+            'roasterStartDate'=> $request->roasterStartDate,
+            'roasterEndDate'=> $request->roasterEndDate,
+            'duration'=> $request->duration,
+            'ratePerHour'=> $request->ratePerHour,
+            'amount'=> $request->amount,
+            'remarks'=> $request->remarks,
+            'updated_at' => Carbon::now(),
+        ]);
+        $notification=array(
+            'message'=>'Scheduler Updated Successfully Added !!!',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
     }
     public function delete($id)
     {

@@ -61,7 +61,8 @@
                                                 <label for="email-id-column">Project Start Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" id="start" name="projectStartDate" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD" />
+                                                    <input type="date" id="start" name="projectStartDate" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD"/>
+
                                                 </div>
                                             </div>
 

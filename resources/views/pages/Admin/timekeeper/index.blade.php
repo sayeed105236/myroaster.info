@@ -18,7 +18,7 @@
                 {{-- <form method="head" action="" data-toggle="modal" id="myForm"> --}}
                 <div class="row row-xs">
                     <div class="col-md-4">
-                       
+
                         <div class="form-group">
                             <input type="date" id="startDate" name="projectStartDate" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" />
                         </div>
@@ -77,9 +77,17 @@
                                             <tr>
                                                 <td>{{ $loop->index+1 }}</td>
                                                 <td>
-
-                                                    {{ $row->employee->fname }} {{ $row->employee->mname }}
-                                                    {{ $row->employee->lname }}
+                                                    @if ($row->employee->fname == null)
+                                                    {{ $row->employee->mname }} {{ $row->employee->lname }}
+                                                    @elseif($row->employee->mname == null)
+                                                    {{ $row->employee->fname }} {{ $row->employee->lname }}
+                                                    @elseif($row->employee->lname==null)
+                                                    {{ $row->employee->mname }} {{ $row->employee->lname }}
+                                                    @else
+                                                    {{ $row->employee->fname }} {{ $row->employee->mname }} {{ $row->employee->lname }}
+                                                    @endif
+                                                    {{-- {{ $row->employee->fname }} {{ $row->employee->mname }}
+                                                    {{ $row->employee->lname }} --}}
 
 
                                                 </td>
@@ -137,13 +145,10 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function () {
-          $('.date').datetimepicker({
-            format: 'MM/DD/YYYY',
-            locale: 'en'
-          });
-        </script>
+
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>

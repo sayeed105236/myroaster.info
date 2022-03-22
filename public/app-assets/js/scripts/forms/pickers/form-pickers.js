@@ -22,11 +22,13 @@
   // Default
   if (basicPickr.length) {
     basicPickr.flatpickr();
+
   }
 
   // Time
   if (timePickr.length) {
     timePickr.flatpickr({
+
       enableTime: true,
       noCalendar: true
     });
@@ -36,9 +38,10 @@
   if (dateTimePickr.length) {
     dateTimePickr.flatpickr({
       enableTime: true,
-      minDate: $('#start').val(),
+    //   minDate: $('#start').val(),
+
     //   dateFormat: "d-m-Y",
-      static: true
+    //   static: true
     });
 
   }
@@ -49,7 +52,8 @@
       weekNumbers: true,
       mode: 'multiple',
     //   dateFormat: "d-m-Y",
-      minDate: new Date($("#start").val()),
+    //   minDate: new Date($("#start").val()),
+    //   minDate: "2022-03-21",
       static: true
     });
   }
@@ -58,6 +62,7 @@
   if (rangePickr.length) {
     rangePickr.flatpickr({
       mode: 'range',
+
       dateFormat: "d-m-Y",
       static: true
     });

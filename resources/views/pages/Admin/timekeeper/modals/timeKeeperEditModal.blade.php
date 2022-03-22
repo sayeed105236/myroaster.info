@@ -15,7 +15,7 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    <form action="{{ route('update-timekeeper') }}" method="POST">
+                                    <form action="{{ route('update-timekeeper') }}" method="POST" >
                                         @csrf
                                         <input type="hidden" name="id" value="{{ $row->id }}">
                                         <div class="row">
@@ -79,9 +79,10 @@
                                                 <label for="email-id-column">Roaster Start Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" value="{{ $row->roasterStartDate }}" id="start_dates" name="roasterStartDate"
+                                                    <input type="text" id="start_dates" value="{{ $row->roasterStartDate }}" name="roasterStartDate"
                                                         class="form-control flatpickr-date-time" placeholder="Start"/>
-                                                </div>
+
+                                                    </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Roaster Ends Date & Time<span
