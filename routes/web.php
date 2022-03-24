@@ -59,6 +59,7 @@ Route::group(['middleware' => ['super_admin']], function() {
 //Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 // admin/company routes
 Route::get('admin/home/', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('admin/home/admins/{id}', [HomeController::class, 'adminHomeall'])->middleware('super_admin');
 Route::get('admin/home/employee/{id}', [EmployeeController::class, 'index'])->middleware('is_admin');
 Route::post('admin/home/employee/store', [EmployeeController::class, 'store'])->name('store-employee')->middleware('is_admin');
 Route::post('admin/home/employee/update', [EmployeeController::class, 'update'])->name('update-employee')->middleware('is_admin');
@@ -106,4 +107,3 @@ Route::post('admin/home/viewjob/search', [ViewJobController::class, 'search'])->
 
 //admin calender
 Route::get('admin/home/calender/{id}', [CalenderController::class, 'index'])->middleware('is_admin');
-

@@ -18,7 +18,7 @@
                 {{-- <form method="head" action="" data-toggle="modal" id="myForm"> --}}
                 <div class="row row-xs">
                     <div class="col-md-4">
-                       
+
                         <div class="form-group">
                             <input type="date" id="startDate" name="projectStartDate" class="form-control" placeholder="YYYY-MM-DD to YYYY-MM-DD" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" />
                         </div>
@@ -213,8 +213,10 @@
 
         function getDay() {
 
+
             var start_dates = new Date(document.getElementById('start_dates').value);
             var end_dates = new Date(document.getElementById('end_dates').value);
+            console.log(start_dates,end_dates);
             //Here we will use getTime() function to get the time difference
             var time_differences = (end_dates.getTime() - start_dates.getTime());
             //Here we will divide the above time difference by the no of miliseconds in a day
@@ -223,6 +225,21 @@
             //alert(days);
             document.getElementById('day').value = days_differences;
         }
+        // function getDay() {
+        //
+        //
+        //     var start_dates = new Date($('#start_dates').val());
+        //     var end_dates = new Date($('#end_dates').val());
+        //
+        //     console.log(start_dates,end_dates);
+        //     //Here we will use getTime() function to get the time difference
+        //     var time_differences = (end_dates.getTime() - start_dates.getTime());
+        //     //Here we will divide the above time difference by the no of miliseconds in a day
+        //     var days_differences = parseInt(time_differences / (1000 * 3600));
+        //
+        //     //alert(days);
+        //     document.getElementById('day').value = days_differences;
+        // }
 
 
         function amountPerHours() {

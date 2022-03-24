@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->integer('roaster_id');
+            $table->integer('roaster_id')->unsigned()->index()->foreign()->references("id")->on("time_keepers")->onDelete("cascade");
             $table->string('payment_status')->default('Unpaid');
             $table->timestamps();
         });

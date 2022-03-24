@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->unsigned()->index()->foreign()->references("id")->on("users")->onDelete("cascade");
             $table->string('pName');
             $table->string('cName');
             $table->string('Status');

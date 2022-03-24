@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('roaster_types', function (Blueprint $table) {
             $table->id();
-            $table->integer('roaster_id');
+            $table->integer('roaster_id')->unsigned()->index()->foreign()->references("id")->on("time_keepers")->onDelete("cascade");
             $table->string('roaster_type')->default('Unschedueled');
             $table->timestamps();
         });
