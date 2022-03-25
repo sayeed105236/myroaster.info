@@ -52,7 +52,13 @@
                         @foreach($employees as $row)
                           <tr>
                               <td>{{ $loop->index+1 }}</td>
-                            <td><img src="{{asset("storage/employees/$row->image")}}" alt="Avatar" height="26" width="26" /></td>
+                            <td>
+                                @if ($row->image != null)
+
+                              <img src="{{asset("storage/employees/$row->image")}}" alt="Avatar" height="26" width="26" /></td>
+                              @else
+                                  No image
+                              @endif
                             <td>
                               {{$row->fname}} {{$row->lname}}
                               </td>
